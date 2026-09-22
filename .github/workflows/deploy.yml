@@ -1,0 +1,26 @@
+name: Portfolio CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check portfolio files
+        run: |
+          test -f index.html
+          test -f style.css
+          echo "Portfolio files are present"
+
+      - name: CI completed
+        run: echo "Portfolio CI pipeline completed successfully"
